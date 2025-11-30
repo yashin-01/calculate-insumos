@@ -1,0 +1,1365 @@
+/* ========================================
+   CALCULADORA DE INSUMOS - PREMIUM DARK THEME
+   Responsive para mÃ³viles, tablets y PC
+   ======================================== */
+
+/* CSS Variables - Design System */
+:root {
+    /* Colors */
+    --bg-primary: #0f1419;
+    --bg-secondary: #1a1f2e;
+    --bg-card: rgba(26, 31, 46, 0.7);
+    --bg-card-hover: rgba(26, 31, 46, 0.9);
+
+    --accent-primary: #ff6b35;
+    --accent-secondary: #f7931e;
+    --accent-success: #4ade80;
+    --accent-warning: #fbbf24;
+    --accent-danger: #ef4444;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-focus: rgba(255, 107, 53, 0.5);
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+    --transition-slow: 350ms ease;
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    padding: var(--spacing-md);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+}
+
+.header-title {
+    font-size: clamp(1.25rem, 4vw, 1.875rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-config {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid var(--accent-primary);
+    border-radius: var(--radius-md);
+    color: var(--accent-primary);
+    cursor: pointer;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    white-space: nowrap;
+}
+
+.btn-config:hover {
+    background: var(--accent-primary);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* Card Styles */
+.card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+}
+
+.card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: var(--shadow-xl);
+}
+
+.section-title {
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.section-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.subsection-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-secondary);
+}
+
+/* Recipe Name Section */
+.recipe-name-section {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(247, 147, 30, 0.05));
+}
+
+.input-recipe-name {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: rgba(15, 20, 25, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all var(--transition-normal);
+}
+
+.input-recipe-name:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--border-focus);
+}
+
+.input-recipe-name::placeholder {
+    color: var(--text-muted);
+}
+
+/* Products Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: rgba(15, 20, 25, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+}
+
+.product-item:has(input[type="checkbox"]:checked) {
+    background: rgba(255, 107, 53, 0.1);
+    border-color: var(--accent-primary);
+}
+
+.product-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.product-checkbox {
+    width: 1.25rem;
+    height: 1.25rem;
+    accent-color: var(--accent-primary);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.product-name {
+    font-weight: 500;
+    flex: 1;
+    cursor: pointer;
+}
+
+.product-price-display {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    flex-wrap: wrap;
+}
+
+.btn-edit {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.8125rem;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.btn-edit:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.product-quantity {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.product-quantity input {
+    flex: 1;
+    padding: var(--spacing-sm);
+    background: rgba(15, 20, 25, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+}
+
+.product-quantity input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.product-quantity input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Gas Section */
+.gas-config {
+    margin-bottom: var(--spacing-lg);
+}
+
+.gas-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background: rgba(15, 20, 25, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.currency {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.input-gas-precio {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    width: 120px;
+    min-width: 100px;
+}
+
+.input-gas-kg {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    width: 60px;
+    text-align: right;
+}
+
+.gas-form {
+    margin-bottom: var(--spacing-lg);
+}
+
+.gas-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: var(--spacing-md);
+    align-items: end;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.input-field label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.input-time,
+.input-temp {
+    padding: var(--spacing-sm);
+    background: rgba(15, 20, 25, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    transition: all var(--transition-normal);
+}
+
+.input-time:focus,
+.input-temp:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--border-focus);
+}
+
+/* Gas Usage List */
+.gas-usos-list {
+    margin-bottom: var(--spacing-lg);
+}
+
+.gas-uso-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background: rgba(15, 20, 25, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    transition: all var(--transition-normal);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.gas-uso-item:hover {
+    background: rgba(15, 20, 25, 0.5);
+    border-color: var(--accent-danger);
+}
+
+.gas-uso-info {
+    flex: 1;
+    color: var(--text-secondary);
+    min-width: 150px;
+}
+
+.gas-uso-cost {
+    font-weight: 600;
+    color: var(--accent-primary);
+    white-space: nowrap;
+}
+
+.btn-delete {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--accent-danger);
+    border-radius: var(--radius-sm);
+    color: var(--accent-danger);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.btn-delete:hover {
+    background: var(--accent-danger);
+    color: white;
+}
+
+.gas-total {
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.1));
+    border: 1px solid var(--accent-primary);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    font-weight: 600;
+}
+
+/* Cost Summary */
+.cost-table {
+    margin-bottom: var(--spacing-lg);
+}
+
+.cost-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    gap: var(--spacing-md);
+}
+
+.cost-item:last-child {
+    border-bottom: none;
+}
+
+.cost-item-name {
+    color: var(--text-secondary);
+}
+
+.cost-item-quantity {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-left: var(--spacing-sm);
+}
+
+.cost-item-value {
+    font-weight: 600;
+    color: var(--accent-primary);
+    white-space: nowrap;
+}
+
+.total-cost {
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(34, 197, 94, 0.1));
+    border: 1px solid var(--accent-success);
+    border-radius: var(--radius-md);
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: rgba(15, 20, 25, 0.3);
+    border-radius: var(--radius-md);
+}
+
+.chart-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.chart-bars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.chart-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.chart-label {
+    min-width: 100px;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.chart-bar-container {
+    flex: 1;
+    min-width: 100px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+}
+
+.chart-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    transition: width var(--transition-slow);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.chart-value {
+    min-width: 80px;
+    text-align: right;
+    font-weight: 600;
+    color: var(--accent-primary);
+    white-space: nowrap;
+}
+
+/* Recipe History */
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background: rgba(15, 20, 25, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.history-item:hover {
+    background: rgba(15, 20, 25, 0.5);
+    border-color: var(--accent-primary);
+    transform: translateX(5px);
+}
+
+.history-info {
+    flex: 1;
+    min-width: 150px;
+}
+
+.history-name {
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.history-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.history-cost {
+    font-weight: 700;
+    color: var(--accent-primary);
+    white-space: nowrap;
+}
+
+.history-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: var(--spacing-xl);
+    font-style: italic;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary,
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-primary);
+}
+
+/* Action Buttons Footer */
+.actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+}
+
+.btn-action {
+    width: 100%;
+}
+
+.btn-new {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.btn-save {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.btn-print {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.btn-action:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-xl);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-title {
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+    font-weight: 600;
+}
+
+.btn-close {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.btn-close:hover {
+    background: var(--accent-danger);
+    border-color: var(--accent-danger);
+}
+
+.modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-lg);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+/* Config Products List */
+.config-products-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.config-product-item {
+    padding: var(--spacing-md);
+    background: rgba(15, 20, 25, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.config-product-name {
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.config-product-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.input-config {
+    padding: var(--spacing-sm);
+    background: rgba(15, 20, 25, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+}
+
+.input-config:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.gas-config-section {
+    padding-top: var(--spacing-lg);
+    border-top: 2px solid var(--border-color);
+}
+
+.config-gas-inputs {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+/* Icon Styles */
+.icon {
+    display: inline-flex;
+    font-size: 1.125rem;
+}
+
+/* Remove number input arrows */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 53, 0.5);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn var(--transition-slow) ease-out;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ======================================== */
+
+/* Small devices (phones, up to 640px) */
+@media (max-width: 640px) {
+    body {
+        padding: var(--spacing-sm);
+    }
+
+    .header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+        padding: var(--spacing-md);
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gas-inputs {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gas-inputs .btn-primary {
+        grid-column: 1 / -1;
+    }
+
+    .gas-label {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-edit span:last-child {
+        display: none;
+    }
+
+    .profit-label {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .chart-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-xs);
+    }
+
+    .chart-label,
+    .chart-value {
+        min-width: auto;
+    }
+
+    .modal-content {
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .modal-footer {
+        justify-content: stretch;
+    }
+
+    .modal-footer button {
+        flex: 1;
+    }
+}
+
+/* Medium devices (tablets, 641px to 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .actions {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Large devices (desktops, 1025px and up) */
+@media (min-width: 1025px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .header,
+    .actions,
+    .btn-edit,
+    .btn-delete,
+    .btn-config,
+    .history-section,
+    .modal {
+        display: none !important;
+    }
+
+    .card {
+        border-color: #ccc;
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+}
+
+/* Profit Margin Section - Restored */
+.profit-section {
+    border-top: 1px solid var(--border-color);
+    padding-top: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.profit-config {
+    display: flex;
+    justify-content: center;
+}
+
+.profit-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    color: var(--text-secondary);
+    background: rgba(15, 20, 25, 0.3);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.input-profit {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(15, 20, 25, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    width: 80px;
+    text-align: center;
+}
+
+.input-profit:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.profit-hint {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.profit-display {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(34, 197, 94, 0.05));
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(74, 222, 128, 0.1);
+}
+
+.profit-title {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+}
+
+.profit-value {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 800;
+    color: var(--accent-success);
+    text-shadow: 0 2px 10px rgba(74, 222, 128, 0.2);
+    line-height: 1.2;
+}
+
+/* ========================================
+   ESTILOS DE IMPRESIÓN
+   ======================================== */
+/* ========================================
+   ESTILOS DE IMPRESIÓN (DEFINITIVO)
+   ======================================== */
+
+/* 1. Configuración global de página para quitar fecha/URL automáticas */
+@page {
+    margin: 0;
+    size: auto;
+}
+
+@media print {
+
+    /* 2. Resetear body y html para evitar hoja extra */
+    html,
+    body {
+        width: 100%;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        color: black !important;
+        overflow: visible !important;
+        min-height: 0 !important;
+    }
+
+    /* 3. Ocultar TODO lo que no sea nuestra área de impresión */
+    body>*:not(#printable-area) {
+        display: none !important;
+    }
+
+    /* 4. Configurar el área de impresión visible */
+    #printable-area {
+        display: block !important;
+        position: absolute;
+        /* Absolute aquí ayuda a "pisar" todo */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto !important;
+        z-index: 9999;
+        background: white;
+        font-family: 'Inter', sans-serif;
+        /* O la fuente que uses */
+    }
+
+    /* Asegurar visibilidad de hijos */
+    #printable-area * {
+        display: block;
+        visibility: visible;
+    }
+
+    /* 5. Estilos internos del reporte (Márgenes de papel) */
+    .print-container {
+        padding: 2cm;
+        /* Margen real del papel */
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Encabezado (Nombre y Fecha) */
+    .print-header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 15px;
+    }
+
+    .print-header h1 {
+        font-size: 24pt;
+        margin: 0 0 10px 0;
+        font-weight: 700;
+    }
+
+    .print-date {
+        font-size: 10pt;
+        color: #666;
+        margin: 0;
+    }
+
+    /* Sección de Contenido */
+    .print-section {
+        margin-bottom: 30px;
+    }
+
+    .print-section h3 {
+        font-size: 14pt;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+    }
+
+    /* Tabla de items - Forzamos flex para alinear */
+    .print-content-table .cost-item {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px dashed #ccc;
+        padding: 8px 0;
+        font-size: 11pt;
+        page-break-inside: avoid;
+        /* Evita que un item se corte entre hojas */
+    }
+
+    .print-content-table .cost-item span {
+        display: inline-block;
+    }
+
+    .print-content-table .cost-item-name {
+        font-weight: 500;
+    }
+
+    .print-content-table .cost-item-quantity {
+        font-size: 0.9em;
+        color: #666;
+        margin-left: 10px;
+    }
+
+    /* Total intermedio */
+    .print-total {
+        text-align: right;
+        font-size: 14pt;
+        font-weight: bold;
+        margin-top: 20px;
+        padding-top: 10px;
+        border-top: 2px solid #000;
+    }
+
+    /* 6. Pie de página (Precio Sugerido) */
+    .print-footer {
+        page-break-inside: avoid;
+        /* No cortar esto nunca */
+        border: 2px dashed #000;
+        padding: 20px;
+        text-align: center;
+        margin-top: 40px;
+        background-color: #f9f9f9 !important;
+
+        /* Para que se imprima el fondo gris */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .print-footer .profit-title {
+        font-size: 12pt;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        color: #444;
+        display: block !important;
+        /* Forzar bloque */
+    }
+
+    .print-footer .profit-value {
+        font-size: 26pt !important;
+        color: #000 !important;
+        /* Negro puro para impresión */
+        font-weight: 800;
+        margin: 0;
+        display: block !important;
+    }
+}
+
+
+/* Quitar encabezados y pies de página del navegador (fecha, URL, título) */
+@page {
+    margin: 0;
+    /* Esto elimina todo lo que el navegador pone por defecto */
+    size: auto;
+}
+
+/* Ajustar el cuerpo para que el contenido no quede pegado al borde del papel */
+@media print {
+    body {
+        margin: 2cm;
+        /* Añadimos nuestro propio margen seguro */
+    }
+
+    /* Aseguramos que nuestra área de impresión respete ese margen */
+    #printable-area {
+        position: relative;
+        /* Cambiado de absolute a relative para respetar márgenes */
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    /* (El resto de tu CSS de impresión sigue igual) */
+}
+
+/* Ocultar el área de impresión en la pantalla normal */
+#printable-area {
+    display: none;
+}
+
+/* ========================================
+   CORRECCIONES PARA MÓVILES (SAFARI/CHROME)
+   ======================================== */
+
+/* 1. Forzar color de texto blanco en botones de acción */
+.btn-primary,
+.btn-save,
+.btn-new,
+.btn-print,
+.btn-export,
+.btn-import,
+.btn-delete {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    /* Safari específico */
+    font-weight: 600;
+}
+
+/* 2. Asegurar que los inputs numéricos se vean bien */
+input[type="number"],
+input[type="text"],
+select {
+    font-size: 16px !important;
+    /* Evita zoom automático en iPhone al escribir */
+    color: var(--text-primary);
+}
+
+/* 3. Corrección específica para impresión en Safari */
+@media print {
+
+    /* Intento extra para ocultar headers en Safari */
+    @page {
+        margin: 0;
+        size: auto;
+    }
+
+    body::before,
+    body::after {
+        display: none !important;
+        content: none !important;
+    }
+}
+
+/* ========================================
+   CORRECCIÓN DE ESTILOS SWEETALERT (SELECT)
+   ======================================== */
+
+/* Forzar estilo oscuro en los inputs y selects dentro de SweetAlert */
+.swal2-popup .swal2-input,
+.swal2-popup .swal2-select,
+.swal2-popup select.swal2-input {
+    background-color: #0f1419 !important;
+    /* Fondo oscuro */
+    color: #f8fafc !important;
+    /* Texto blanco */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Estilo específico para las opciones del desplegable */
+.swal2-popup select option {
+    background-color: #0f1419;
+    color: #f8fafc;
+}
+
+/* Arreglar el focus para que se vea el borde naranja */
+.swal2-popup .swal2-input:focus,
+.swal2-popup select:focus {
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.3) !important;
+    border-color: #ff6b35 !important;
+}
+
+/* Asegurar que el placeholder de los inputs se vea bien */
+.swal2-popup .swal2-input::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* Colores específicos para botones de Importar/Exportar */
+.btn-export {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    /* Naranja ámbar */
+    color: white !important;
+}
+
+.btn-import {
+    background: linear-gradient(135deg, #64748b, #475569);
+    /* Gris azulado elegante */
+    color: white !important;
+}
+
+.btn-import-recipe {
+    background: linear-gradient(135deg, #ec4899, #db2777);
+    /* Rosa fuerte */
+    color: white !important;
+}
+
+/* Asegurar que el texto sea visible en todos los botones de acción */
+.actions .btn-action span {
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    /* Pequeña sombra para mejorar lectura */
+}
